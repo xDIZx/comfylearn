@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
  const menuItems = [
-        { text: 'Холодильники', href: '/kbt/holodos.html' },
+        { text: 'Холодильники', href: '/comfylearn/kbt/holodos.html' },
         { text: 'Про нас', href: '#' },
         { text: 'Контакти', href: '#' }
     ];
