@@ -33,3 +33,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+ const menuItems = [
+        { text: 'Холодильники', href: '/kbt/holodos.html' },
+        { text: 'Про нас', href: '#' },
+        { text: 'Контакти', href: '#' }
+    ];
+    const menu = document.getElementById('menu');
+
+    // Clear it just in case (optional)
+    menu.innerHTML = '';
+
+    // Create and append links
+    menuItems.forEach(item => {
+        const a = document.createElement('a');
+        a.href = item.href;
+        a.textContent = item.text;
+        menu.appendChild(a);
+    });
