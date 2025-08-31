@@ -37,11 +37,14 @@ document.addEventListener("DOMContentLoaded", function () {
  const menuItems = [
         { text: 'Холодильники', href: '/comfylearn/kbt/holodos.html' },
         { text: 'Варильні поверхні', href: '/comfylearn/kbt/varka.html' },
-        { text: 'Варильні поверхні', href: '/comfylearn/kbt/duhovka.html' },
+        { text: 'Духові шафи', href: '/comfylearn/kbt/duhovka.html' },
 
 
         { text: 'Ручний Блендер', href: '/comfylearn/mbt/blendruk.html' },
         { text: 'Електрогриль BBQ', href: '/comfylearn/mbt/greel.html' },
+        { text: 'Електрогриль BBQ', href: '/comfylearn/mbt/kava.html' },
+
+        { text: 'Конслосі/планшети', href: '/comfylearn/ciphra/consoles.html' },
     ];
     const menu = document.getElementById('menu');
 
