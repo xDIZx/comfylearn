@@ -36,8 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
  const menuItems = [
         { text: 'Холодильники', href: '/comfylearn/kbt/holodos.html' },
-        { text: 'Про нас', href: '#' },
-        { text: 'Контакти', href: '#' }
+        { text: 'Варильні поверхні', href: '/comfylearn/kbt/varka.html' },
+
+
+        { text: 'Ручний Блендер', href: '/comfylearn/mbt/blenderuk.html' },
+        { text: 'Електрогриль BBQ', href: '/comfylearn/mbt/greel.html' },
     ];
     const menu = document.getElementById('menu');
 
