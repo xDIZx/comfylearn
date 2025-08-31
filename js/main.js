@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         { text: 'Ручний Блендер', href: '/comfylearn/mbt/blendruk.html' },
         { text: 'Електрогриль BBQ', href: '/comfylearn/mbt/greel.html' },
-        { text: 'Електрогриль BBQ', href: '/comfylearn/mbt/kava.html' },
+        { text: 'Кавоварки', href: '/comfylearn/mbt/kava.html' },
 
         { text: 'Конслосі/планшети', href: '/comfylearn/ciphra/consoles.html' },
     ];
