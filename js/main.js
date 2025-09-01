@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { text: 'Мікрохвильовки', href: '/comfylearn/mbt/microwave.html' },
         { text: 'Мультиварки', href: '/comfylearn/mbt/multicook.html' },
         { text: 'М`ясорубки', href: '/comfylearn/mbt/masorubka.html' },
+        { text: 'Мультипечі', href: '/comfylearn/mbt/airfry.html' },
 
         { text: 'Конслосі', href: '/comfylearn/ciphra/consoles.html' },
         { text: 'Монітори', href: '/comfylearn/ciphra/monitors.html' },

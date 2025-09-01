@@ -108,12 +108,18 @@ header {
 
 .text-content {
     font-family: Arial, sans-serif;
+    padding: 10px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.75);
+    margin: 15px 0;
 }
 
 .topic_name {
     cursor: pointer;
     color: #333;
     width: fit-content;
+    margin: 0;
     /* font-size: 1.5rem; */
 }
 
@@ -126,10 +132,12 @@ header {
     transition: max-height 0.3s ease, opacity 0.3s ease;
     list-style-type: none;
     padding-left: 20px;
+    margin: 0;
 }
 
 .dropdown-list.show {
     max-height: 1000px;
+    margin-top: 10px;
     /* Встановіть достатню висоту для вашого контенту */
     opacity: 1;
 }
@@ -155,7 +163,8 @@ header {
     min-width: 280px;
 }
 
-.sku-table th, .sku-table td {
+.sku-table th,
+.sku-table td {
     padding: 10px 12px;
     border: 1px solid #ccc;
     text-align: left;
@@ -171,7 +180,7 @@ header {
 }
 
 @media (max-width: 768px) {
-    .sku-table{
+    .sku-table {
         font-size: 12px;
     }
 }
