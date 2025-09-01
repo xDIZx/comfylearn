@@ -45,8 +45,11 @@ document.addEventListener("DOMContentLoaded", function () {
         { text: 'Ручний Блендер', href: '/comfylearn/mbt/blendruk.html' },
         { text: 'Електрогриль BBQ', href: '/comfylearn/mbt/greel.html' },
         { text: 'Кавоварки', href: '/comfylearn/mbt/kava.html' },
+        { text: 'Мікрохвильовки', href: '/comfylearn/mbt/microwave.html' },
+        { text: 'Мультиварки', href: '/comfylearn/mbt/multicook.html' },
 
-        { text: 'Конслосі/планшети', href: '/comfylearn/ciphra/consoles.html' },
+        { text: 'Конслосі', href: '/comfylearn/ciphra/consoles.html' },
+        { text: 'Монітори', href: '/comfylearn/ciphra/monitors.html' },
     ];
     const menu = document.getElementById('menu');
 
