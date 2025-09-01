@@ -38,6 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
         { text: 'Холодильники', href: '/comfylearn/kbt/holodos.html' },
         { text: 'Варильні поверхні', href: '/comfylearn/kbt/varka.html' },
         { text: 'Духові шафи', href: '/comfylearn/kbt/duhovka.html' },
+        { text: 'Кухонні Машини', href: '/comfylearn/kbt/kitchen.html' },
+        { text: 'М`ясорубки', href: '/comfylearn/kbt/masorubka.html' },
 
 
         { text: 'Ручний Блендер', href: '/comfylearn/mbt/blendruk.html' },
