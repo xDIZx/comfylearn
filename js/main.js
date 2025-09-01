@@ -39,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { text: 'Варильні поверхні', href: '/comfylearn/kbt/varka.html' },
         { text: 'Духові шафи', href: '/comfylearn/kbt/duhovka.html' },
         { text: 'Кухонні Машини', href: '/comfylearn/kbt/kitchen.html' },
-        { text: 'М`ясорубки', href: '/comfylearn/kbt/masorubka.html' },
 
 
         { text: 'Ручний Блендер', href: '/comfylearn/mbt/blendruk.html' },
@@ -47,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { text: 'Кавоварки', href: '/comfylearn/mbt/kava.html' },
         { text: 'Мікрохвильовки', href: '/comfylearn/mbt/microwave.html' },
         { text: 'Мультиварки', href: '/comfylearn/mbt/multicook.html' },
+        { text: 'М`ясорубки', href: '/comfylearn/mbt/masorubka.html' },
 
         { text: 'Конслосі', href: '/comfylearn/ciphra/consoles.html' },
         { text: 'Монітори', href: '/comfylearn/ciphra/monitors.html' },
