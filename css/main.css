@@ -123,6 +123,11 @@ header {
     /* font-size: 1.5rem; */
 }
 
+h3.topic_name{
+    margin: 5px 0;
+    color: #43b02a;
+}
+
 .dropdown-list {
     display: block;
     max-height: 0;
@@ -136,7 +141,7 @@ header {
 }
 
 .dropdown-list.show {
-    max-height: 1000px;
+    max-height: 3000px;
     margin-top: 10px;
     /* Встановіть достатню висоту для вашого контенту */
     opacity: 1;

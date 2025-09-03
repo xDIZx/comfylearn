@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ноутбуки</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+    <!-- Шапка -->
+    <header>
+        <h1>Навчання</h1>
+    </header>
+
+    <!-- Основний вміст -->
+    <div class="container" id="container">
+        <div class="burger" id="burger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="menu" id="menu"></div>
+
+        <h1>Ноутбуки</h1>
+        <p class="date">September 3, 2025</p>
+
+        <div class="topic-container">
+
+            <!-- Типи ноутбуків -->
+            <div class="text-content">
+                <h2 class="topic_name">Типи ноутбуків</h2>
+                <ul class="dropdown-list">
+                    <li><strong>Бюджетні ноутбуки</strong> – дешевші моделі для серфінгу, офісних програм, перегляду
+                        відео. <em>Для кого:</em> студенти, базові користувачі.</li>
+                    <li><strong>Ультрабуки</strong> – тонкі, легкі, з довгим часом роботи, SSD, потужні процесори.
+                        <em>Для кого:</em> подорожуючі, студенти, ті, хто працює в дорозі.</li>
+                    <li><strong>Ноутбуки для бізнесу</strong> – підвищена надійність, функції безпеки, великі екрани.
+                        <em>Для кого:</em> підприємці, ІТ-фахівці, корпоративні користувачі.</li>
+                    <li><strong>Геймерські ноутбуки</strong> – потужні відеокарти, FPS, охолодження, екрани 120–240 Гц.
+                        <em>Для кого:</em> геймери, стрімери, 3D-дизайнери.</li>
+                    <li><strong>Для творчих професій</strong> – високоточні екрани, великі обсяги пам’яті, потужні GPU.
+                        <em>Для кого:</em> дизайнери, фотографи, відеоредактори, музиканти.</li>
+                </ul>
+            </div>
+
+            <!-- Типи екранів -->
+            <div class="text-content">
+                <h2 class="topic_name">Типи екранів</h2>
+                <ul class="dropdown-list">
+                    <li><strong>TN</strong> – швидкий відгук (1–3 мс), високі частоти 120–240 Гц, дешеві. Недоліки:
+                        погані кути огляду, слабка передача кольорів. <em>Для:</em> геймерів, бюджетних користувачів.
+                    </li>
+                    <li><strong>IPS</strong> – широкі кути огляду (178°), точні кольори, яскравість. Недоліки: дорожчі,
+                        IPS Glow. <em>Для:</em> дизайнерів, фотографів, мультимедіа.</li>
+                    <li><strong>VA</strong> – високий контраст, кращі кольори, ніж TN. Недоліки: довший відгук, не така
+                        точність як IPS. <em>Для:</em> кіно, текстів, середніх геймерів.</li>
+                    <li><strong>OLED</strong> – ідеальний чорний, безмежна контрастність, миттєвий відгук. Недоліки:
+                        висока ціна, ризик вигорання. <em>Для:</em> фотографів, геймерів, любителів якісної картинки.
+                    </li>
+                    <li><strong>LED</strong> – яскравість, енергоефективність, тонкі. Недоліки: час відгуку повільніший,
+                        ніж OLED. <em>Для:</em> універсальних користувачів.</li>
+                </ul>
+            </div>
+
+            <!-- Процесор -->
+            <div class="text-content">
+                <h2 class="topic_name">Процесор (CPU)</h2>
+                <ul class="dropdown-list">
+                    <li><strong>Кількість ядер:</strong> більше ядер – більше багатозадачності.</li>
+                    <li><strong>Частота:</strong> вимірюється в ГГц, визначає швидкість виконання інструкцій.</li>
+                    <li><strong>Техпроцес:</strong> менший нм = енергоефективність і менше нагрівання.</li>
+                    <li><strong>Hyper-Threading/SMT:</strong> ядро виконує 2 потоки.</li>
+                    <li><strong>TDP:</strong> визначає тепловиділення.</li>
+                </ul>
+                <h3 class="topic_name">Основні моделі</h3>
+                <ul class="dropdown-list">
+                    <li><strong>Pentium / Celeron:</strong> для простих завдань.</li>
+                    <li><strong>Core i3 / Ryzen 3:</strong> серфінг, документи, відео.</li>
+                    <li><strong>Core i5 / Ryzen 5:</strong> офіс, мультимедіа, легкі ігри.</li>
+                    <li><strong>Core i7 / Ryzen 7:</strong> відео, 3D, ігри середнього рівня.</li>
+                    <li><strong>Core i9 / Ryzen 9:</strong> професіонали, рендеринг, моделювання.</li>
+                </ul>
+                <h3 class="topic_name">Типи процесорів</h3>
+                <ul class="dropdown-list">
+                    <li><strong>U (Ultra-low Power):</strong> для ультрабуків, 15 Вт TDP.</li>
+                    <li><strong>H (High Performance):</strong> для ігрових ноутбуків, 45 Вт+.</li>
+                    <li><strong>HX (Extreme Performance):</strong> топові робочі станції, 55 Вт.</li>
+                </ul>
+                <p>Це "мозок" ноутбука, відповідає за виконання програм, швидкість обробки даних.</p>
+            </div>
+
+            <!-- Відеокарта -->
+            <div class="text-content">
+                <h2 class="topic_name">Відеокарта (GPU)</h2>
+                <ul class="dropdown-list">
+                    <li><strong>Інтегрована:</strong> енергоефективна, бюджетна, але слабка. <em>Для:</em> офіс,
+                        серфінг, відео.</li>
+                    <li><strong>Дискретна:</strong> окрема з VRAM, потужна для ігор і графіки. <em>Для:</em> ігри,
+                        рендеринг, дизайн.</li>
+                </ul>
+                <h3 class="topic_name">Основні класи</h3>
+                <ul class="dropdown-list">
+                    <li><strong>Бюджетний:</strong> GTX 1650, RX 5500M – легкі ігри.</li>
+                    <li><strong>Середній:</strong> RTX 3050, RX 5700M – ігри, монтаж.</li>
+                    <li><strong>Високий:</strong> RTX 3070/3080, RX 6800M – AAA-ігри, 3D.</li>
+                    <li><strong>Топовий:</strong> RTX 4080/4090 – проф. графіка, рендеринг.</li>
+                </ul>
+            </div>
+
+            <!-- Оперативна пам'ять -->
+            <div class="text-content">
+                <h2 class="topic_name">Оперативна пам’ять (RAM)</h2>
+                <ul class="dropdown-list">
+                    <li><strong>8–16 ГБ:</strong> офіс, прості ігри.</li>
+                    <li><strong>16 ГБ:</strong> ігри на високих налаштуваннях, монтаж.</li>
+                    <li><strong>32 ГБ+:</strong> рендеринг, віртуалізація.</li>
+                </ul>
+            </div>
+
+            <!-- Вбудована пам'ять -->
+            <div class="text-content">
+                <h2 class="topic_name">Вбудована пам’ять</h2>
+                <ul class="dropdown-list">
+                    <li><strong>HDD:</strong> великі обсяги, але повільні.</li>
+                    <li><strong>SSD:</strong> швидкі, безшумні, дорожчі.</li>
+                    <li><strong>NVMe SSD:</strong> ультрашвидкі (до 7 ГБ/с), дорогі.</li>
+                    <li><strong>eMMC:</strong> дешеві, повільні, для бюджетних.</li>
+                </ul>
+            </div>
+
+            <!-- Порти -->
+            <div class="text-content">
+                <h2 class="topic_name">Порти та підключення</h2>
+                <ul class="dropdown-list">
+                    <li><strong>USB-A:</strong> миші, клавіатури, флешки.</li>
+                    <li><strong>USB-C:</strong> зарядка, передача даних.</li>
+                    <li><strong>HDMI:</strong> монітори, телевізори.</li>
+                    <li><strong>Thunderbolt 3/4:</strong> 40 Гбіт/с, зовнішні GPU.</li>
+                    <li><strong>3.5 мм:</strong> навушники, мікрофони.</li>
+                    <li><strong>Ethernet:</strong> стабільний інтернет.</li>
+                </ul>
+            </div>
+
+            <!-- Додаткові фішки -->
+            <div class="text-content">
+                <h2 class="topic_name">Додаткові особливості</h2>
+                <ul class="dropdown-list">
+                    <li>Тачпад з мультитач жестами.</li>
+                    <li>Підсвічування клавіатури / RGB.</li>
+                    <li>Сенсорний екран, 2-в-1 трансформери.</li>
+                    <li>Бездротова зарядка (Qi).</li>
+                    <li>Розпізнавання обличчя, сканер відбитків.</li>
+                    <li>Wi-Fi 6, FullHD вебкамера.</li>
+                    <li>Системи охолодження з 2 вентиляторами.</li>
+                    <li>120 Гц+ дисплеї, низький час відгуку (1–3 мс).</li>
+                    <li>Покращені дискретні відеокарти.</li>
+                    <li>Механічні клавіші.</li>
+                </ul>
+            </div>
+
+            <!-- ТОП SKU -->
+            <div class="text-content">
+                <h2 class="topic_name">ТОП моделі ноутбуків (SKU)</h2>
+                <ul class="dropdown-list sku-drop">
+                    <table class="sku-table">
+                        <thead>
+                            <tr>
+                                <th>Код</th>
+                                <th>Модель</th>
+                                <th>Бренд</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>NB001</td>
+                                <td>Lenovo IdeaPad 3 15</td>
+                                <td>Lenovo</td>
+                            </tr>
+                            <tr>
+                                <td>NB002</td>
+                                <td>Acer Aspire 5</td>
+                                <td>Acer</td>
+                            </tr>
+                            <tr>
+                                <td>NB003</td>
+                                <td>HP Pavilion 15</td>
+                                <td>HP</td>
+                            </tr>
+                            <tr>
+                                <td>NB004</td>
+                                <td>Asus ZenBook 14</td>
+                                <td>Asus</td>
+                            </tr>
+                            <tr>
+                                <td>NB005</td>
+                                <td>Dell XPS 13</td>
+                                <td>Dell</td>
+                            </tr>
+                            <tr>
+                                <td>NB006</td>
+                                <td>Apple MacBook Air M2</td>
+                                <td>Apple</td>
+                            </tr>
+                            <tr>
+                                <td>NB007</td>
+                                <td>MSI Katana GF66</td>
+                                <td>MSI</td>
+                            </tr>
+                            <tr>
+                                <td>NB008</td>
+                                <td>Asus ROG Strix G15</td>
+                                <td>Asus</td>
+                            </tr>
+                            <tr>
+                                <td>NB009</td>
+                                <td>HP Omen 16</td>
+                                <td>HP</td>
+                            </tr>
+                            <tr>
+                                <td>NB010</td>
+                                <td>Apple MacBook Pro 16</td>
+                                <td>Apple</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<script src="../js/main.js"></script>
+
+</html>
