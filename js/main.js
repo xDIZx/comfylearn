@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { text: 'Духові шафи', href: '/comfylearn/kbt/duhovka.html' },
         { text: 'Кухонні Машини', href: '/comfylearn/kbt/kitchen.html' },
         { text: 'Посудомийка', href: '/comfylearn/kbt/dishwasher.html' },
+        { text: 'Праска', href: '/comfylearn/kbt/praska.html' },
 
         { text: 'Ручний Блендер', href: '/comfylearn/mbt/blendruk.html' },
         { text: 'Електрогриль BBQ', href: '/comfylearn/mbt/greel.html' },
@@ -57,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { text: 'Монітори', href: '/comfylearn/ciphra/monitors.html' },
         { text: 'Ноутбуки', href: '/comfylearn/ciphra/laptop.html' },
         { text: 'Підбір планшету', href: '/comfylearn/ciphra/planshet.html' },
+        { text: 'Смартгодинник', href: '/comfylearn/ciphra/smartwatch.html' },
         { text: 'Телефон', href: '/comfylearn/ciphra/phone.html' },
         { text: 'Телефізор', href: '/comfylearn/ciphra/tv.html' },
     ];
