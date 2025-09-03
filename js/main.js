@@ -26,10 +26,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // Перемикаємо відображення меню та зсув контейнера
         if (burger.classList.contains("open")) {
             menu.style.left = "0";
-            container.style.marginLeft = "250px"; // Зсув основного контенту
+            // container.style.marginLeft = "250px"; // Зсув основного контенту
         } else {
             menu.style.left = "-250px";
-            container.style.marginLeft = "0"; // Відновлення положення основного контенту
+            // container.style.marginLeft = "0"; // Відновлення положення основного контенту
         }
     });
 });

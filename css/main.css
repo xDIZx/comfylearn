@@ -16,11 +16,13 @@ header {
 
 .burger {
     display: block;
-    position: absolute;
+    position: fixed;
     top: 15px;
     left: 20px;
     cursor: pointer;
     z-index: 10;
+    padding: 10px;
+    background: #4CAF50;
 }
 
 .burger div {
@@ -50,17 +52,17 @@ header {
 
 .menu {
     /* display: none; */
-    position: absolute;
+    position: fixed;
     top: 0;
     left: -250px;
     width: 250px;
     height: 100%;
     background-color: #4CAF50;
     color: white;
-    padding-top: 60px;
     text-align: center;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
+    overflow-x: auto;
 }
 
 .menu a {
@@ -72,6 +74,9 @@ header {
 
 .menu a:hover {
     background-color: #3e8e41;
+}
+.menu a:first-child{
+    margin-top: 60px;
 }
 
 .container {
