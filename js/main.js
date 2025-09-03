@@ -38,9 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { text: 'Холодильники', href: '/comfylearn/kbt/holodos.html' },
         { text: 'Варильні поверхні', href: '/comfylearn/kbt/varka.html' },
         { text: 'Духові шафи', href: '/comfylearn/kbt/duhovka.html' },
-        { text: 'Кухонні Машини', href: '/comfylearn/kbt/kitchen.html' },
         { text: 'Посудомийка', href: '/comfylearn/kbt/dishwasher.html' },
-        { text: 'Праска', href: '/comfylearn/kbt/praska.html' },
 
         { text: 'Ручний Блендер', href: '/comfylearn/mbt/blendruk.html' },
         { text: 'Електрогриль BBQ', href: '/comfylearn/mbt/greel.html' },
@@ -53,6 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
         { text: 'Робот Пилосос', href: '/comfylearn/mbt/robopilosos.html' },
         { text: 'Ручний пилосос', href: '/comfylearn/mbt/acumpilosos.html' },
         { text: 'Фен', href: '/comfylearn/mbt/phen.html' },
+        { text: 'Кухонні Машини', href: '/comfylearn/mbt/kitchen.html' },
+        { text: 'Праска', href: '/comfylearn/mbt/praska.html' },
 
         { text: 'Конслосі', href: '/comfylearn/ciphra/consoles.html' },
         { text: 'Монітори', href: '/comfylearn/ciphra/monitors.html' },
