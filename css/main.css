@@ -12,17 +12,19 @@ header {
     padding: 15px 0;
     text-align: center;
     position: relative;
+    padding-top: 30px;
 }
 
 .burger {
     display: block;
     position: fixed;
-    top: 15px;
-    left: 20px;
+    top: 5px;
+    left: 5px;
     cursor: pointer;
     z-index: 10;
     padding: 10px;
     background: #4CAF50;
+    border-radius: 50%;
 }
 
 .burger div {
