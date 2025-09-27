@@ -116,58 +116,96 @@
 
 <script src="../js/main.js"></script>
 <script>
-    document.querySelectorAll('.results').forEach(block => {
-        const planInput = block.querySelector('.plan');
-        const factInput = block.querySelector('.fact');
-        const percentInput = block.querySelector('.percent');
-        const penetrationInput = block.querySelector('input[placeholder="% проникнення"]');
+    document.querySelectorAll('.results').forEach((block, index) => {
+        const inputs = block.querySelectorAll('input'); // всі поля в блоці
 
         function calculate() {
-            const plan = parseFloat(planInput.value.replace(/\s/g, '')) || 0;
-            const fact = parseFloat(factInput.value.replace(/\s/g, '')) || 0;
+            const planInput = block.querySelector('.plan');
+            const factInput = block.querySelector('.fact');
+            const percentInput = block.querySelector('.percent');
 
-            if (plan > 0) {
-                percentInput.value = ((fact / plan) * 100).toFixed(2) + '%';
-            } else {
-                percentInput.value = '';
+            if (planInput && factInput && percentInput) {
+                const plan = parseFloat(planInput.value.replace(/\s/g, '')) || 0;
+                const fact = parseFloat(factInput.value.replace(/\s/g, '')) || 0;
+
+                if (plan > 0) {
+                    percentInput.value = ((fact / plan) * 100).toFixed(2) + '%';
+                } else {
+                    percentInput.value = '';
+                }
+            }
+            saveData();
+        }
+
+        // збереження в localStorage
+        function saveData() {
+            const data = {};
+            inputs.forEach((inp, i) => {
+                data[i] = inp.value;
+            });
+            localStorage.setItem('results-' + index, JSON.stringify(data));
+        }
+
+        // завантаження з localStorage
+        function loadData() {
+            const saved = localStorage.getItem('results-' + index);
+            if (saved) {
+                const data = JSON.parse(saved);
+                inputs.forEach((inp, i) => {
+                    if (data[i] !== undefined) {
+                        inp.value = data[i];
+                    }
+                });
             }
         }
 
-        // при вводі дозволяємо тільки цифри і крапку
-        penetrationInput.addEventListener('input', () => {
-            let val = penetrationInput.value;
+        // обробники для кожного input
+        inputs.forEach(inp => {
+            if (inp.placeholder === "% проникнення") {
+                // спеціальне правило для % проникнення
+                inp.addEventListener('input', () => {
+                    let val = inp.value;
 
-            // якщо ввели щось окрім цифр і крапки → підставляємо крапку
-            if (/[^0-9.]/.test(val)) {
-                val = val.replace(/[^0-9.]/g, '.');
+                    // якщо ввели щось окрім цифр і крапки → підставляємо крапку
+                    if (/[^0-9.]/.test(val)) {
+                        val = val.replace(/[^0-9.]/g, '.');
+                    }
+
+                    // тільки одна крапка
+                    let parts = val.split('.');
+                    if (parts.length > 2) {
+                        val = parts[0] + '.' + parts.slice(1).join('');
+                    }
+
+                    inp.value = val;
+                    saveData();
+                });
+
+                inp.addEventListener('blur', () => {
+                    let value = inp.value.replace(/\s/g, '');
+                    if (value !== '' && !value.endsWith('%')) {
+                        inp.value = value + '%';
+                    }
+                    saveData();
+                });
+
+                inp.addEventListener('focus', () => {
+                    inp.value = inp.value.replace('%', '');
+                });
+            } else {
+                inp.addEventListener('input', () => {
+                    saveData();
+                    calculate();
+                });
             }
-
-            // залишаємо тільки першу крапку
-            let parts = val.split('.');
-            if (parts.length > 2) {
-                val = parts[0] + '.' + parts.slice(1).join('');
-            }
-
-            penetrationInput.value = val;
         });
 
-
-        // при втраті фокусу додаємо %
-        penetrationInput.addEventListener('blur', () => {
-            let value = penetrationInput.value.replace(/\s/g, '');
-            if (value !== '') {
-                penetrationInput.value = value + '%';
-            }
-        });
-
-        // при фокусі прибираємо %, щоб можна було редагувати
-        penetrationInput.addEventListener('focus', () => {
-            penetrationInput.value = penetrationInput.value.replace('%', '');
-        });
-
-        planInput.addEventListener('input', calculate);
-        factInput.addEventListener('input', calculate);
+        // при завантаженні сторінки відновлюємо дані
+        loadData();
+        calculate();
     });
 </script>
+
+
 
 </html>
