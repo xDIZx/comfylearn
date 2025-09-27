@@ -83,31 +83,33 @@
                 <div class="results trade">
                     <div class="name-daily">Trade-in</div>
                     <div class="col-3">
-                        <input class="effect-1" type="text" placeholder="Факт">
+                        <input class="effect-1 fact" type="text" placeholder="Факт">
                         <span class="focus-border"></span>
                     </div>
                 </div>
                 <div class="results">
                     <div class="name-daily">Телефони</div>
                     <div class="col-3">
-                        <input class="effect-1" type="text" placeholder="Факт">
+                        <input class="effect-1 fact" type="text" placeholder="Факт">
                         <span class="focus-border"></span>
                     </div>
                 </div>
                 <div class="results">
                     <div class="name-daily">Ноутбуки</div>
                     <div class="col-3">
-                        <input class="effect-1" type="text" placeholder="Факт">
+                        <input class="effect-1 fact" type="text" placeholder="Факт">
                         <span class="focus-border"></span>
                     </div>
                 </div>
                 <div class="results">
                     <div class="name-daily">Телевізори</div>
                     <div class="col-3">
-                        <input class="effect-1" type="text" placeholder="Факт">
+                        <input class="effect-1 fact" type="text" placeholder="Факт">
                         <span class="focus-border"></span>
                     </div>
                 </div>
+
+                <button id="copy-it">Copy IT</button> <button id="copy-all">Copy All</button>
             </div>
 
         </div>
@@ -205,6 +207,82 @@
         calculate();
     });
 </script>
+
+
+
+<script>
+
+    function getBlockData(name) {
+        const blocks = document.querySelectorAll(".results");
+        for (let block of blocks) {
+            const title = block.querySelector(".name-daily");
+            if (title && title.textContent.trim() === name) {
+                const plan = block.querySelector(".plan")?.value.trim() || "0";
+                const fact = block.querySelector(".fact")?.value.trim() || "0";
+                const percentDone = block.querySelector(".percent")?.value.trim() || "0";
+                const penetration = block.querySelector('input[placeholder="% проникнення"]')?.value.trim() || "0";
+                return { plan, fact, percentDone, penetration };
+            }
+        }
+        return null;
+    }
+
+    document.getElementById("copy-it").addEventListener("click", () => {
+        const it = getBlockData("IT");
+        const hs = getBlockData("ХС");
+        const tr = getBlockData("Trade-in");
+        const ph = getBlockData("Телефони");
+        const lp = getBlockData("Ноутбуки");
+        const tv = getBlockData("Телевізори");
+
+        let text = `К14\n\n`;
+        if (it) {
+            text += `ІТ - ${it.plan} / ${it.fact} (${it.percentDone}) ${it.penetration}\n`;
+        }
+        if (hs) {
+            text += `ХС - ${hs.plan} /  ${hs.fact} (${hs.percentDone}) ${hs.penetration}\n\n`;
+        }
+        if (tr) {
+            text += `Trade-in - ${tr.fact}`;
+        }
+
+        navigator.clipboard.writeText(text);
+        // alert("Copied IT!");
+    });
+
+    document.getElementById("copy-all").addEventListener("click", () => {
+        const it = getBlockData("IT");
+        const hs = getBlockData("ХС");
+        const tr = getBlockData("Trade-in");
+        const ph = getBlockData("Телефони");
+        const lp = getBlockData("Ноутбуки");
+        const tv = getBlockData("Телевізори");
+
+        let text = `К14\n\n`;
+        if (it) {
+            text += `ІТ - ${it.plan} / ${it.fact} ${it.penetration} (${it.percentDone})\n`;
+        }
+        if (hs) {
+            text += `ХС - ${hs.plan} /  ${hs.fact} ${hs.penetration} (${hs.percentDone})\n\n`;
+        }
+        if (tr) {
+            text += `Trade-in - ${tr.fact}\n\n`;
+        }
+        if (ph) {
+            text += `Телефони - ${ph.fact}\n`;
+        }
+        if (lp) {
+            text += `Ноутбуки - ${lp.fact}\n`;
+        }
+        if (tv) {
+            text += `Телевізори - ${tv.fact}\n`;
+        }
+
+        navigator.clipboard.writeText(text);
+        // alert("Copied All!");
+    });
+</script>
+
 
 
 
