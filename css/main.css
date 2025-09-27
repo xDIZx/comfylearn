@@ -77,7 +77,8 @@ header {
 .menu a:hover {
     background-color: #3e8e41;
 }
-.menu a:first-child{
+
+.menu a:first-child {
     margin-top: 60px;
 }
 
@@ -130,7 +131,7 @@ header {
     /* font-size: 1.5rem; */
 }
 
-h3.topic_name{
+h3.topic_name {
     margin: 5px 0;
     color: #43b02a;
 }
@@ -189,6 +190,78 @@ h3.topic_name{
 
 .sku-table tr:nth-child(even) {
     background-color: #fafafa;
+}
+
+/* necessary to give position: relative to parent. */
+input[type="text"] {
+    font: 15px/24px 'Muli', sans-serif;
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+}
+
+:focus {
+    outline: none;
+}
+
+.col-3 {
+    width: 90%;
+    position: relative;
+}
+
+/* necessary to give position: relative to parent. */
+input[type="text"] {
+    font: 15px/24px "Lato", Arial, sans-serif;
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+}
+
+.effect-1 {
+    border: 0;
+    padding: 7px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.effect-1~.focus-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #4caf50;
+    transition: 0.4s;
+}
+
+.effect-1:focus~.focus-border {
+    width: 100%;
+    transition: 0.4s;
+}
+
+.results {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /* grid-template-rows: repeat(5, 1fr); */
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.name-daily {
+    text-align: center;
+    align-content: center;
+}
+
+.trade {
+    margin: 50px 0;
+}
+
+.k14 {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(5, 1fr);
+    text-align: center;
 }
 
 @media (max-width: 768px) {

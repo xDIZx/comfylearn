@@ -24,17 +24,85 @@
         <div class="menu" id="menu"></div>
 
         <h1>Звіт</h1>
-        <p class="date">August 31, 2025</p>
+        <!-- <p class="date">August 31, 2025</p> -->
 
         <div class="topic-container">
 
 
             <div class="text-content">
-                <h2 class="topic_name">Чи безпечна індукція?</h2>
-                <ul class="dropdown-list">
-                    <li>Так, індукція безпечна, тому що нагрівається самий посуд, а не скло, і немає ризику обпектись
-                        вам, дітям чи домашнім улюбленцям.</li>
-                </ul>
+
+                <h2 class="topic_name k14">К14</h2>
+                <div class="results">
+                    <div class="name-daily">IT</div>
+                    <div class="col-3">
+                        <input class="effect-1 plan" type="text" placeholder="План">
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="col-3">
+                        <input class="effect-1 fact" type="text" placeholder="Факт">
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="col-3">
+                        <input class="effect-1 percent" type="text" placeholder="% виконання" readonly>
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="col-3">
+                        <input class="effect-1" type="text" placeholder="% проникнення">
+                        <span class="focus-border"></span>
+                    </div>
+                </div>
+
+                <div class="results">
+                    <div class="name-daily">ХС</div>
+                    <div class="col-3">
+                        <input class="effect-1 plan" type="text" placeholder="План">
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="col-3">
+                        <input class="effect-1 fact" type="text" placeholder="Факт">
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="col-3">
+                        <input class="effect-1 percent" type="text" placeholder="% виконання" readonly>
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="col-3">
+                        <input class="effect-1" type="text" placeholder="% проникнення">
+                        <span class="focus-border"></span>
+                    </div>
+                </div>
+
+
+
+
+                <div class="results trade">
+                    <div class="name-daily">Trade-in</div>
+                    <div class="col-3">
+                        <input class="effect-1" type="text" placeholder="Факт">
+                        <span class="focus-border"></span>
+                    </div>
+                </div>
+                <div class="results">
+                    <div class="name-daily">Телефони</div>
+                    <div class="col-3">
+                        <input class="effect-1" type="text" placeholder="Факт">
+                        <span class="focus-border"></span>
+                    </div>
+                </div>
+                <div class="results">
+                    <div class="name-daily">Ноутбуки</div>
+                    <div class="col-3">
+                        <input class="effect-1" type="text" placeholder="Факт">
+                        <span class="focus-border"></span>
+                    </div>
+                </div>
+                <div class="results">
+                    <div class="name-daily">Телевізори</div>
+                    <div class="col-3">
+                        <input class="effect-1" type="text" placeholder="Факт">
+                        <span class="focus-border"></span>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -42,5 +110,59 @@
 </body>
 
 <script src="../js/main.js"></script>
+<script>
+    document.querySelectorAll('.results').forEach(block => {
+        const planInput = block.querySelector('.plan');
+        const factInput = block.querySelector('.fact');
+        const percentInput = block.querySelector('.percent');
+        const penetrationInput = block.querySelector('input[placeholder="% проникнення"]');
+
+        function calculate() {
+            const plan = parseFloat(planInput.value.replace(/\s/g, '')) || 0;
+            const fact = parseFloat(factInput.value.replace(/\s/g, '')) || 0;
+
+            if (plan > 0) {
+                percentInput.value = ((fact / plan) * 100).toFixed(2) + '%';
+            } else {
+                percentInput.value = '';
+            }
+        }
+
+        // при вводі дозволяємо тільки цифри і крапку
+        penetrationInput.addEventListener('input', () => {
+            let val = penetrationInput.value;
+
+            // якщо ввели щось окрім цифр і крапки → підставляємо крапку
+            if (/[^0-9.]/.test(val)) {
+                val = val.replace(/[^0-9.]/g, '.');
+            }
+
+            // залишаємо тільки першу крапку
+            let parts = val.split('.');
+            if (parts.length > 2) {
+                val = parts[0] + '.' + parts.slice(1).join('');
+            }
+
+            penetrationInput.value = val;
+        });
+
+
+        // при втраті фокусу додаємо %
+        penetrationInput.addEventListener('blur', () => {
+            let value = penetrationInput.value.replace(/\s/g, '');
+            if (value !== '') {
+                penetrationInput.value = value + '%';
+            }
+        });
+
+        // при фокусі прибираємо %, щоб можна було редагувати
+        penetrationInput.addEventListener('focus', () => {
+            penetrationInput.value = penetrationInput.value.replace('%', '');
+        });
+
+        planInput.addEventListener('input', calculate);
+        factInput.addEventListener('input', calculate);
+    });
+</script>
 
 </html>
