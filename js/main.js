@@ -61,6 +61,8 @@ document.addEventListener("DOMContentLoaded", function () {
         { text: 'Смартгодинник', href: '/comfylearn/ciphra/smartwatch.html' },
         { text: 'Телефон', href: '/comfylearn/ciphra/phone.html' },
         { text: 'Телефізор', href: '/comfylearn/ciphra/tv.html' },
+
+        { text: 'Звіт день', href: '/comfylearn/zvit/daily.html' },
     ];
     const menu = document.getElementById('menu');
 
