@@ -145,7 +145,7 @@
             const rejection = target - tarFact;
             const notDone = ASP * tarFact;
             const mustBe = ASP * target;
-            const miss = mustBe - notDone;
+            const miss = mustBe*0.0816 - notDone*0.0816;
 
             if (!isNaN(tarFact)) row.querySelector(".target").innerText = target.toFixed(2);
             if (!isNaN(tarFact)) row.querySelector(".tarFact").innerText = tarFact.toFixed(2);
