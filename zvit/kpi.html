@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Варильні поверхні</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 6px 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #f0f0f0;
+        }
+
+        td[contenteditable="true"] {
+            background: #fffbea;
+            cursor: text;
+        }
+
+        .buttons {
+            margin: 15px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Шапка -->
+    <header>
+        <h1>Варильні поверхні</h1>
+    </header>
+
+    <!-- Основний вміст -->
+    <div class="container" id="container">
+        <div class="burger" id="burger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="menu" id="menu"></div>
+
+        <h1>KPI</h1>
+        <!-- <p class="date">August 31, 2025</p> -->
+
+        <div class="topic-container">
+            <div class="text-content">
+                <div class="labels">
+                    <h2 class="topic_name k14">К14</h2>
+                </div>
+
+                <table id="reportTable">
+                    <thead>
+                        <tr>
+                            <th>Челіки</th>
+                            <th>Смарт шт.</th>
+                            <th>План %</th>
+                            <th>ціль шт.</th>
+                            <th>Факт %</th>
+                            <th>шт</th>
+                            <th>відхилення</th>
+                            <th>ASP послуг</th>
+                            <th>не виконано</th>
+                            <th>має бути</th>
+                            <th>Корм КГ + букет</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+                <div class="total">Сума "Корм КГ + букет": <span id="totalMiss">0</span></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="../js/main.js"></script>
+<script>
+    const tableBody = document.querySelector("#reportTable tbody");
+    const totalMiss = document.getElementById("totalMiss");
+    const ROW_COUNT = 10; // скільки рядків створювати спочатку
+
+    function parsePercent(str) {
+        if (!str || str.trim() === "") return 0;
+        return parseFloat(str.toString().replace(",", ".").replace("%", "").trim()) / 100;
+    }
+
+    function parseNumber(str) {
+        if (!str || str.trim() === "") return 0;
+        return parseFloat(str.toString().replace(",", ".").replace(/\s/g, ""));
+    }
+
+    function createRow() {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td contenteditable="true"></td>
+            <td class="num" contenteditable="true"></td>
+            <td class="planed" contenteditable="true"></td>
+            <td class="target"></td>
+            <td class="panFact" contenteditable="true"></td>
+            <td class="tarFact"></td>
+            <td class="rejection"></td>
+            <td class="ASP" contenteditable="true"></td>
+            <td class="notDone"></td>
+            <td class="mustBe"></td>
+            <td class="miss"></td>
+        `;
+        return row;
+    }
+
+    function adjustRows() {
+        const rows = Array.from(tableBody.querySelectorAll("tr"));
+        // Видаляємо зайві рядки
+        while (rows.length > ROW_COUNT) {
+            tableBody.removeChild(tableBody.lastChild);
+            rows.pop();
+        }
+        // Додаємо, якщо менше
+        while (tableBody.querySelectorAll("tr").length < ROW_COUNT) {
+            tableBody.appendChild(createRow());
+        }
+    }
+
+
+
+    function updateTable() {
+        let total = 0;
+        tableBody.querySelectorAll("tr").forEach(row => {
+            const num = parseNumber(row.querySelector(".num")?.innerText);
+            const planed = parsePercent(row.querySelector(".planed")?.innerText);
+            const panFact = parsePercent(row.querySelector(".panFact")?.innerText);
+            const ASP = parseNumber(row.querySelector(".ASP")?.innerText);
+
+            const target = num * planed
+            const tarFact = num * panFact;
+            const rejection = target - tarFact;
+            const notDone = ASP * tarFact;
+            const mustBe = ASP * target;
+            const miss = mustBe - notDone;
+
+            if (!isNaN(tarFact)) row.querySelector(".target").innerText = target.toFixed(2);
+            if (!isNaN(tarFact)) row.querySelector(".tarFact").innerText = tarFact.toFixed(2);
+            if (!isNaN(rejection)) row.querySelector(".rejection").innerText = rejection.toFixed(2);
+            if (!isNaN(notDone)) row.querySelector(".notDone").innerText = notDone.toFixed(2);
+            if (!isNaN(mustBe)) row.querySelector(".mustBe").innerText = mustBe.toFixed(2);
+            if (!isNaN(miss)) {
+                row.querySelector(".miss").innerText = miss.toFixed(2) + " грн.";
+                total += miss;
+            }
+        });
+        totalMiss.innerText = total.toFixed(2) + " грн.";
+        localStorage.setItem("reportTable", tableBody.innerHTML);
+    }
+
+
+    // Сортування по колонці "num"
+    function sortByNum() {
+        const rows = Array.from(tableBody.querySelectorAll("tr"));
+        rows.sort((a, b) => {
+            const aVal = parseNumber(a.querySelector(".miss")?.innerText);
+            const bVal = parseNumber(b.querySelector(".miss")?.innerText);
+            return bVal - aVal; // від більшого до меншого
+        });
+        tableBody.innerHTML = "";
+        rows.forEach(r => tableBody.appendChild(r));
+    }
+
+    // Автозбереження при редагуванні
+    tableBody.addEventListener("input", () => {
+        updateTable();
+    });
+
+    // Виклик при завантаженні
+    window.addEventListener("load", () => {
+        const saved = localStorage.getItem("reportTable");
+        if (saved) {
+            tableBody.innerHTML = saved;
+        }
+        adjustRows(); // ✅ приводимо кількість рядків до ROW_COUNT
+        updateTable();
+        sortByNum();
+    });
+</script>
+
+
+
+
+
+
+
+
+</html>
