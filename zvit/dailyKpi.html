@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Варильні поверхні</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 6px 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #f0f0f0;
+        }
+
+        td[contenteditable="true"] {
+            background: #fffbea;
+            cursor: text;
+        }
+
+        .buttons {
+            margin: 15px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Шапка -->
+    <header>
+        <h1>Варильні поверхні</h1>
+    </header>
+
+    <!-- Основний вміст -->
+    <div class="container" id="container">
+        <div class="burger" id="burger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="menu" id="menu"></div>
+
+        <h1>KPI</h1>
+        <!-- <p class="date">August 31, 2025</p> -->
+
+        <div class="topic-container">
+            <div class="text-content">
+                <div class="labels">
+                    <h2 class="topic_name k14">К14</h2>
+                </div>
+
+                <table id="reportTableDay">
+                    <thead>
+                        <tr>
+                            <th>Челіки</th>
+                            <th>Смарт шт.</th>
+                            <th>Сер.</th>
+                            <th>Трейд</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="../js/main.js"></script>
+<script>
+    const tableBody = document.querySelector("#reportTableDay tbody");
+    const ROW_COUNT = 10; // скільки рядків створювати спочатку
+
+    function parseNumber(str) {
+        if (!str || str.trim() === "") return 0;
+        return parseFloat(str.toString().replace(",", ".").replace(/\s/g, ""));
+    }
+
+    function createRow() {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td class="name" contenteditable="true"></td>
+            <td class="fact" contenteditable="true"></td>
+            <td class="ser" contenteditable="true"></td>
+            <td class="trade" contenteditable="true"></td>
+        `;
+        return row;
+    }
+
+    function adjustRows() {
+        const rows = Array.from(tableBody.querySelectorAll("tr"));
+        while (rows.length > ROW_COUNT) {
+            tableBody.removeChild(tableBody.lastChild);
+            rows.pop();
+        }
+        while (tableBody.querySelectorAll("tr").length < ROW_COUNT) {
+            tableBody.appendChild(createRow());
+        }
+    }
+
+    function updateColors() {
+        tableBody.querySelectorAll(".ser").forEach(cell => {
+            let text = cell.innerText.trim();
+            if (text === "") {
+                cell.style.backgroundColor = "white";
+                return;
+            }
+
+            let val = parseNumber(text);
+
+            if (isNaN(val)) {
+                cell.style.backgroundColor = "white";
+                return;
+            }
+
+            if (val >= 0 && val <= 25) {
+                // Червоний → Жовтий
+                let ratio = val / 28; // 0 → 0, 25 → 1
+                let r = 255;
+                let g = Math.round(255 * ratio); // 0 → 255
+                let b = 0;
+                cell.style.backgroundColor = `rgb(${r},${g},${b})`;
+            } else if (val > 25 && val < 35) {
+                // Жовтий → Білий
+                let ratio = (val - 25) / 10; // 26 → ~0.1, 34 → ~0.9
+                let r = 255;
+                let g = 255;
+                let b = Math.round(255 * ratio); // 0 → 255
+                cell.style.backgroundColor = `rgb(${r},${g},${b})`;
+            } else if (val >= 35 && val <= 100) {
+                // Білий → Зелений
+                let ratio = (val - 30) / 65; // 35 → 0, 100 → 1
+                let r = Math.round(255 * (1 - ratio));
+                let g = 255;
+                let b = Math.round(255 * (1 - ratio));
+                cell.style.backgroundColor = `rgb(${r},${g},${b})`;
+            } else {
+                // За межами 0-100 — сірий
+                cell.style.backgroundColor = "#eee";
+            }
+        });
+    }
+
+
+
+    function updateTable() {
+        localStorage.setItem("reportTableDay", tableBody.innerHTML);
+        updateColors();
+    }
+
+    function sortByFact() {
+        const rows = Array.from(tableBody.querySelectorAll("tr"));
+        rows.sort((a, b) => {
+            const aVal = parseNumber(a.querySelector(".ser")?.innerText);
+            const bVal = parseNumber(b.querySelector(".ser")?.innerText);
+            return bVal - aVal;
+        });
+        tableBody.innerHTML = "";
+        rows.forEach(r => tableBody.appendChild(r));
+    }
+    // Автопідстановка % для колонки ser
+    function attachSerListeners() {
+        tableBody.querySelectorAll(".ser").forEach(cell => {
+            cell.addEventListener("blur", () => {
+                let text = cell.innerText.trim();
+                if (text !== "" && !text.endsWith("%")) {
+                    cell.innerText = text.replace("%", "") + "%";
+                }
+                updateTable();
+            });
+
+            cell.addEventListener('focus', () => {
+                let text = cell.innerText.trim();
+                cell.innerText = text.replace("%", "")
+            });
+        });
+    }
+
+    tableBody.addEventListener("input", () => {
+        updateTable();
+    });
+
+    window.addEventListener("load", () => {
+        const saved = localStorage.getItem("reportTableDay");
+        if (saved) {
+            tableBody.innerHTML = saved;
+        }
+        attachSerListeners();
+        adjustRows();
+        updateTable();
+        sortByFact();
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>
